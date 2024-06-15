@@ -1,0 +1,4 @@
+泄露账号密码，给url
+
+fofa语法：
+server="SunFull-Webs"

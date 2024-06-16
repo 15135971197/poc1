@@ -1,3 +1,4 @@
+#app="用友-GRP-U8"
 import requests
 import argparse
 import sys

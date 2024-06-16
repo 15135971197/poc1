@@ -50,7 +50,7 @@ def poc(target):
                 with open('result.txt', 'a') as f:
                     f.write(target + '\n')
             else:
-                print(f"[-] 该网址存在信息泄露漏洞 {target}")
+                print(f"[-] 该网址不存在信息泄露漏洞 {target}")
     except Exception as e:
         pass
 if __name__ == '__main__':
